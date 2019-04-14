@@ -1,6 +1,6 @@
 import requests, json
 from bs4 import BeautifulSoup
-from caching import Cache
+from advanced_expiry_caching import Cache
 import codecs
 import sys
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer)
@@ -19,3 +19,14 @@ def access_page_data(url):
     return data
 
 main_page = access_page_data(START_URL)
+
+main_soup = BeautifulSoup(main_page, features="html.parser")
+body_content = main_soup.find('div',{'class':'page_section__body'})
+
+list_of_cities = body_content.find_all('h3')
+
+cities_lst = []
+for c in list_of_cities:
+    cities_lst.append(c.text)
+
+# print(cities_lst)
