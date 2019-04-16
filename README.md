@@ -39,8 +39,9 @@ NOTE: Need not have 3 steps, but should have as many as are appropriate!
 - Directory Name
   - File in directory
   - File in directory
-- File name
-- File name
+- README.md
+- database_schema_diagram.png
+-
 
 ---
 ## Code Requirements for Grading
@@ -81,7 +82,7 @@ Below is a list of the requirements listed in the rubric for you to copy and pas
 - [ ] Sourcing of data using web scraping
 - [ ] Sourcing of data using web REST API requests
 - [ ] Sourcing of data using user input and/or a downloaded .csv or .json dataset
-- [ ] Caching of data you continually retrieve from the internet in some way
+- [x] Caching of data you continually retrieve from the internet in some way
 
 ### Submission
 - [ ] I included a link to my GitHub repository with the correct permissions on Canvas! (Did you though? Did you actually? Are you sure you didn't forget?)
