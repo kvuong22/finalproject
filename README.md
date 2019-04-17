@@ -1,6 +1,4 @@
-# Project Title
-Cherry Blossom Locations in Japan
-
+# Cherry Blossom Sites in Japan
 Kim Vuong
 
 [Link to this repository](https://github.com/kvuong22/finalproject)
@@ -9,7 +7,7 @@ Kim Vuong
 
 ## Project Description
 
-This project will provide users a list of locations to see cherry blossom trees bloom in Japan. This includes the city name, the location site, and the estimated bloom time frame. The user can enter in a city and if the database has that city, it will display a list of the location site and estimated bloom time frame. If the city does not have a location site in the database, it will let the user know this.
+This project will provide users a list of locations to see cherry blossom trees bloom in Japan. This includes the region name, the location site, and the estimated bloom time frame. The user can enter in a region and if the database contains that region, it will display a list of the location sites and estimated bloom time frame. If the region does not have a location site in the database, it will let the user know this.
 
 ## How to run
 
@@ -41,7 +39,8 @@ NOTE: Need not have 3 steps, but should have as many as are appropriate!
   - File in directory
 - README.md
 - database_schema_diagram.png
--
+- jp.csv
+
 
 ---
 ## Code Requirements for Grading
@@ -79,9 +78,9 @@ Below is a list of the requirements listed in the rubric for you to copy and pas
 - [ ] Inclusion of JavaScript files in the application
 - [ ] Links in the views of Flask application page/s
 - [ ] Relevant use of `itertools` and/or `collections`
-- [ ] Sourcing of data using web scraping
+- [x] Sourcing of data using web scraping
 - [ ] Sourcing of data using web REST API requests
-- [ ] Sourcing of data using user input and/or a downloaded .csv or .json dataset
+- [x] Sourcing of data using user input and/or a downloaded .csv or .json dataset
 - [x] Caching of data you continually retrieve from the internet in some way
 
 ### Submission
