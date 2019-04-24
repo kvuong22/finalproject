@@ -1,6 +1,10 @@
 import requests, json
 from bs4 import BeautifulSoup
 from advanced_expiry_caching import Cache
+# from sqlalchemy import Column, ForeignKey, Integer, String
+# from sqlalchemy.orm import relationship
+# from SI507project_dbcreate import Base
+import csv
 import codecs
 import sys
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer)
@@ -18,55 +22,30 @@ def access_page_data(url):
         PROGRAM_CACHE.set(url, data)
     return data
 
-main_page = access_page_data(START_URL)
-
-main_soup = BeautifulSoup(main_page, features="html.parser")
-body_content = main_soup.find('div',{'class':'page_section__body'})
-
-list_of_cities = body_content.find_all('h3')
-
-# cities_lst = []
-data_lst = []
-for city in list_of_cities:
-    data_lst.append(city.text)
-for c in list_of_cities:
-    info_content = c.find_all('section',{'class':'spot_list'})
-    for section in info_content:
-        each_section_lst = []
-
-    # cities_lst.append(city.text)
-# print(cities_lst)
-
-# info_content = main_soup.find('section',{'class':'spot_list'})
 #
-# locations = info_content.find_all('h1 class="spot_list__spot__name"')
-#
-# location_info_lst = []
-# for c in locations:
-#     location_info_lst.append(c.string)
+def get_bloom_site_data(START_URL):
+    main_page = access_page_data(START_URL)
+    main_soup = BeautifulSoup(main_page, features="html.parser")
+    body_content = main_soup.find('div',{'class':'page_section__body'})
 
+    each_section = body_content.find_all('section',{'class':'spot_list'})
+    # print(type(each_section))
 
+    site_bloom_lst = []
+    each_spot = body_content.findChildren('div', {'class':'spot_list__spot__main_info'})
+    for spot in each_spot:
+        each_spot_lst = []
+#     # print (spot)
+#     # print(type(spot))
+        if spot.findChild('h1',{'class':'spot_list__spot__name'}):
+            spot_name = spot.findChild('h1',{'class':'spot_list__spot__name'})
+        # print(spot.findChild('h1',{'class':'spot_list__spot__name'}))
+            each_spot_lst.append(spot_name.text.replace('•', ''))
+# # print(each_spot_lst)
+        if spot.findChild('span',{'class':'spot_meta__content'}):
+            bloom_time = spot.findChild('span',{'class':'spot_meta__content'})
+            each_spot_lst.append(bloom_time.text)
+        site_bloom_lst.append(each_spot_lst)
+    return site_bloom_lst
 
-
-
-
-#     all_info.append(spot_name.text)
-#
-# print(all_info)
-
-#models for database
-class Cities(Base):
-    __tablename__ = 'cities'
-    City_ID = Column(Integer, primary_key=True, autoincrement=True)
-    City_Name = Column(String(250))
-    Admin = Column(String(250))
-    Population = Column(Integer)
-
-
-class Locations(Base):
-    __tablename__ = "locations"
-    Location_ID = Column(Integer, primary_key=True, autoincrement=True)
-    Location_Name
-    City = Column(Integer, ForeignKey('cities.City_ID'))
-    Bloom_Date = Column(String(150))
-    cities = relationship('Cities')
+bloom_site_data = get_bloom_site_data(START_URL)
