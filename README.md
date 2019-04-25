@@ -7,7 +7,7 @@ Kim Vuong
 
 ## Project Description
 
-This project will provide users a list of locations to see cherry blossom trees bloom in Japan. This includes the region name, the location site, and the estimated bloom time frame. The user can enter in a region and if the database contains that region, it will display a list of the location sites and estimated bloom time frame. If the region does not have a location site in the database, it will let the user know this.
+This project will provide users a list of locations to see cherry blossom trees bloom in Japan. This includes the sites and the area, area type, and the estimated bloom time frame for each site. The user can enter in an area and if the database contains that area, it will display a list of the location sites from that area. If the region does not have a location site in the database, it will let the user know the area is not in the database and to try searching for another area. The user will also be able to see the extensive list of all sites with their corresponding area, area type, and bloom dates provided by the database.
 
 ## How to run
 
@@ -74,9 +74,9 @@ Below is a list of the requirements listed in the rubric for you to copy and pas
 - [ ] Object definitions using inheritance (indicate if this counts for 2 or 3 of the six requirements in a parenthetical)
 - [ ] A many-to-many relationship in your database structure
 - [ ] At least one form in your Flask application
-- [ ] Templating in your Flask application
-- [ ] Inclusion of JavaScript files in the application
-- [ ] Links in the views of Flask application page/s
+- [x] Templating in your Flask application
+- [x] Inclusion of JavaScript files in the application
+- [x] Links in the views of Flask application page/s
 - [ ] Relevant use of `itertools` and/or `collections`
 - [x] Sourcing of data using web scraping
 - [ ] Sourcing of data using web REST API requests
