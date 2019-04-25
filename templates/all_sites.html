@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>All Cherry Blossom Sites in the Database Listed Below</title>
+
+
+<script type="text/javascript">
+  function displayInformation() {
+    document.querySelector('h1').innerHTML = "All Cherry Blossom Sites in the Database Listed Below";
+    var body = document.querySelector('body')
+    body.style.background = "#ffb3d6";
+    body.style.margin = "10%";}
+  // function displayInformation () {
+  // document.querySelector('h1').innerHTML = "All Cherry Blossom Sites in the Database Listed Below";
+  //   var body = document.querySelector('body')
+  //   body.style.background = "ffb3d6";
+  //   body.style.margin = "10%";
+  // }
+</script>
+<style>
+h1, li {
+	color: #b30053;
+}
+
+</style>
+</head>
+<body onload = "displayInformation();">
+  <h1>All Cherry Blossom Sites in the Database Listed Below</h1>
+  <ul>
+  {% for s in all_info %}
+  <li><b>{{ s[0] }}</b> usually blooms {{s[3]}} is at {{ s[1] }}, which is a {{s[2]}}.</li><br>
+  {% endfor %}
+  </ul>
+<br>
+<br>
+  <form>
+  <button type="submit"
+  formaction="{{ url_for('homepage')}}">Return to Home Page</button>
+  </form>

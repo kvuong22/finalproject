@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>The input area does not exist in the database. Please try another area.</title>
+
+
+<script type="text/javascript">
+  function displayInformation () {
+    document.querySelector('h3').innerHTML = "The input area does not exist in the database. Please try another area.";
+    var body = document.querySelector('body')
+    body.style.background = "#ffb3d6";
+    body.style.margin = "10%";}
+
+</script>
+<style>
+h3{
+	color: #b30053;
+}
+
+</style>
+</head>
+<body onload = "displayInformation();">
+	<h3>The input area does not exist in the database. Please try another area.</h3>
+<br>
+<br>
+<form>
+<button type="submit"
+formaction="{{ url_for('homepage')}}">Return to home page</button>
+</form>
