@@ -1,26 +1,27 @@
 import os
 from db_populate import *
 from SI507project_tools import *
-from flask import Flask, render_template, session, redirect, url_for # tools that will make it easier to build on things
-from flask_sqlalchemy import SQLAlchemy # handles database stuff for us - need to pip install flask_sqlalchemy in your virtual env, environment, etc to use this and run this
+from flask import Flask, render_template, session, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
 import csv
+
 # Application configurations
 app = Flask(__name__)
 app.debug = True
 app.use_reloader = True
 app.config['SECRET_KEY'] = 'something something for app security adgsdfsadfdflsdfsj'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./jp_bloom.db' # TODO: decide what your new database name will be -- that has to go here
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./jp_bloom.db'
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-# Set up Flask debug stuff
+#Flask setup with debugging
 db = SQLAlchemy(app) # For database use
 session = db.session # to make queries easy
 
-##### Set up Models #####
 
+##### Models #####
 class Area(db.Model):
     __tablename__ = 'areas'
     id = db.Column(db.Integer, primary_key=True)
@@ -52,23 +53,18 @@ def homepage():
     return render_template('home_page.html')
 
 
-
 @app.route('/search/<area>/')
 def area_search(area):
     if Area.query.filter_by(areaname=area).first():
         area_searched = Area.query.filter_by(areaname=area).first()
-        # print(area_searched)
         site_bloom_return = []
         matched_areasites = Bloomsite.query.filter_by(area_id=area_searched.id).all()
-        # print(matched_areasites)
         for s in matched_areasites:
             site_return = Bloomsite.query.filter_by(sitename=s.sitename).first()
-            # matched_dates = Bloomsite.query.filter_by(bloom_id=s.i).first()
-            # matched_bloom = Bloom
-            # date_return = Bloomdate.query.filter_by(bloomdate=matched_dates.bloomdate)
             site_bloom_return.append(s.sitename)
         return render_template('search_area.html',site_bloom_return=site_bloom_return)
-
+    else:
+        return render_template('invalid_input.html')
 
 
 @app.route('/all_site_info/')
@@ -84,10 +80,10 @@ def see_all_site_info():
 
 
 if __name__ == '__main__':
-    db.create_all() # This will create database in current directory, as set up, if it doesn't exist, but won't overwrite if you restart - so no worries about that
+    db.create_all() 
     get_bloom_site_data(START_URL)
     get_area_info('site_area_data.csv')
     get_site_info(bloom_site_data)
     get_bloomdate_info(bloom_site_data)
 
-    app.run() # run with this: python main_app.py runserver
+    app.run()
