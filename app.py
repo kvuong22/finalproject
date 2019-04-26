@@ -53,6 +53,11 @@ def homepage():
     return render_template('home_page.html')
 
 
+@app.route('/search/')
+def search_main():
+    return render_template('search_main.html')
+
+
 @app.route('/search/<area>/')
 def area_search(area):
     if Area.query.filter_by(areaname=area).first():
@@ -80,7 +85,7 @@ def see_all_site_info():
 
 
 if __name__ == '__main__':
-    db.create_all() 
+    db.create_all()
     get_bloom_site_data(START_URL)
     get_area_info('site_area_data.csv')
     get_site_info(bloom_site_data)
