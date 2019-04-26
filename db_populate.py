@@ -1,5 +1,4 @@
 from app import Bloomsite, Area, Bloomdate, session
-# from SI507project_tools import *
 import csv
 
 #dictionary to look up where the site is located at for populating appropriate area id
@@ -60,13 +59,11 @@ def get_site_info(lst):
         site_info = Bloomsite.query.filter_by(sitename=site[0]).first()
         if not site_info:
             area_namecheck_key = data_dict[site[0]]
-            # print(area_namecheck_key) prints out each area
             areacheck = Area.query.filter_by(areaname=area_namecheck_key).first()
             bloomcheck = Bloomdate.query.filter_by(bloomdate=site[1]).first()
             if areacheck and bloomcheck:
                 areamatch = areacheck.id
                 bloommatch = bloomcheck.id
-                # a_id = Area.query.filter_by(.id).first()
                 site_info = Bloomsite(sitename=site[0],area_id=areamatch,bloom_id=bloommatch)
         session.add(site_info)
         session.commit()
@@ -75,8 +72,6 @@ def get_site_info(lst):
 #function to get data to populate in Bloomdate table
 def get_bloomdate_info(lst):
     for site in lst:
-        # for spot in site:
-        # print(site[1])
         bloomdate_info = Bloomdate.query.filter_by(bloomdate=site[1]).first()
         if not bloomdate_info:
             bloomdate_info = Bloomdate(bloomdate=site[1])
