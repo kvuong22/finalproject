@@ -30,10 +30,12 @@ class TestDatabaseAreasTable(unittest.TestCase):
         self.conn = sqlite3.connect("jp_bloom.db")
         self.cur = self.conn.cursor()
 
+
     def test_for_areas_table(self):
         self.cur.execute("select id, areaname, areatype from areas where areaname = 'Nagano'")
         data = self.cur.fetchone()
         self.assertEqual(data, (7, 'Nagano', 'Prefecture'), "Testing data that results from selecting Nagano")
+
 
     def tearDown(self):
     	self.conn.commit()
@@ -46,10 +48,12 @@ class TestDatabaseBloomsitesTable(unittest.TestCase):
             self.conn = sqlite3.connect("jp_bloom.db")
             self.cur = self.conn.cursor()
 
+
         def test_for_areas_table(self):
             self.cur.execute("select id, sitename, area_id, bloom_id from bloomsites where id = '18'")
             data = self.cur.fetchone()
             self.assertEqual(data, (18, 'Hikone Castle', 11, 4), "Testing data that results from selecting id being 18")
+
 
         def tearDown(self):
         	self.conn.commit()
