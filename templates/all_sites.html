@@ -26,15 +26,19 @@ h1, li {
 </style>
 </head>
 <body onload = "displayInformation();">
-  <h1>All Cherry Blossom Sites in the Database Listed Below</h1>
-  <ul>
-  {% for s in all_info %}
-  <li><b>{{ s[0] }}</b> usually blooms {{s[3]}} is at {{ s[1] }}, which is a {{s[2]}}.</li><br>
-  {% endfor %}
-  </ul>
+<h1>All Cherry Blossom Sites in the Database Listed Below</h1>
+<ul>
+{% for s in all_info %}
+<li><b>{{ s[0] }}</b> usually blooms {{s[3]}} is at {{ s[1] }}, which is a {{s[2]}}.</li><br>
+{% endfor %}
+</ul>
 <br>
 <br>
-  <form>
-  <button type="submit"
-  formaction="{{ url_for('homepage')}}">Return to Home Page</button>
-  </form>
+<form>
+<button type="submit"
+formaction="{{ url_for('homepage')}}">Return to Home Page</button>
+<button type="submit"
+formaction="{{ url_for('search_main')}}">Search by an Area</button>
+<button type="submit"
+formaction="{{ url_for('see_all_site_info')}}">See all Sites in the Database</button>
+</form>

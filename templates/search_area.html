@@ -3,22 +3,21 @@
 	<meta charset="UTF-8">
 	<title>The following sites were found from your search:</title>
 
-
 <script type="text/javascript">
   function displayInformation() {
     document.querySelector('h1').innerHTML = "The following sites were found from your search:";
     var body = document.querySelector('body')
     body.style.background = "#ffb3d6";
     body.style.margin = "10%";}
-
 </script>
+
 <style>
 h1, li {
 	color: #b30053;
 }
-
 </style>
 </head>
+
 <body onload = "displayInformation();">
   <h1>The following sites were found from your search:</h1>
   <ul>
@@ -30,4 +29,8 @@ h1, li {
 <form>
 <button type="submit"
 formaction="{{ url_for('homepage')}}">Return to Home Page</button>
+<button type="submit"
+formaction="{{ url_for('search_main')}}">Search by an Area</button>
+<button type="submit"
+formaction="{{ url_for('see_all_site_info')}}">See all Sites in the Database</button>
 </form>

@@ -4,8 +4,6 @@
 	<meta charset="UTF-8">
 	<title>Cherry Blossom Sites in Japan Database</title>
 
-
-
 <script type="text/javascript">
 	alert("Welcome to the Cherry Blossom Sites in Japan Database!");
 	console.log("");
@@ -16,8 +14,8 @@
 		body.style.background = "#ffb3d6";
 		body.style.margin = "10%";
 	}
-
 </script>
+
 <style>
 h1,h4 {
 	color: #b30053;
@@ -25,6 +23,7 @@ h1,h4 {
 
 </style>
 </head>
+
 <body onload = "displayInformation();">
 	<h1>A name or title goes here</h1>
 	<h4>Use this app to search for an area in Japan and let you know if there are well-known sites to see cherry blossom trees and when they bloom or see all the places listed in the database.</h4>
@@ -32,6 +31,10 @@ h1,h4 {
 	<br>
 	<br>
 	<form>
+	<button type="submit"
+	formaction="{{ url_for('homepage')}}">Home page</button>
+	<button type="submit"
+	formaction="{{ url_for('search_main')}}">Search by an Area</button>
 	<button type="submit"
 	formaction="{{ url_for('see_all_site_info')}}">See all Sites in the Database</button>
 	</form>
