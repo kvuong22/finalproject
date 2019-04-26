@@ -17,19 +17,12 @@ This project will scrape cherry blossom sites and bloom dates from https://www.j
 
 ## Using Flask Application
 
-1. After accessing the home page from Step 3 of how to run the files, the user can either use the buttons at the bottom of the pages to navigate the flask app or the user can manually type in the URL with the routes listed below. Please note when searching for an area, you will need to manually type in the area in the URL field after 'the search/' and the first letter must be capitalized.
-2. Upon loading the home page from step 3 of how to run the files, you should see a pop up box like this:
-[pop up box on main page](screenshot_homepage1.png)
-3. Once you click OK, you should see:
-[landing home page](screenshot_homepage2.png)
-4. The main search page will tell you to manually input the area of interest in the URL and to capitalize the first letter.
-[main search](screenshot_search_main.png)
-5. When you input an area that is in the database, it will return the sites like in this example of inputting "Kyoto":
-[kyoto results](screenshot_search_kyoto.png)
-If it is an invalid input, one that is not in the database, you will see:
-[invalid](screenshot_invalidsearch)
-6. When viewing all sites in the database, it should look like this:
-[all site](screenshot_all_site_info)
+1. After accessing the home page from Step 3 of how to run the files, the user can either use the buttons at the bottom of the pages to navigate the flask app or the user can manually type in the URL with the routes listed below. Please note when searching for an area, you will need to manually type in the area in the URL field after 'the search/' and the first letter must be capitalized. Screenshots are all in the repository folder screenshots and are referred to below.
+2. Upon loading the home page from step 3 of how to run the files, you should see a pop up box like the one in screenshot_homepage1.png.
+3. Once you click OK, you should see the home page looking like screenshot_homepage2.png.
+4. The main search page will tell you to manually input the area of interest in the URL and to capitalize the first letter, which looks like screenshot_search_main.png.
+5. When you input an area that is in the database, it will return the sites like in screenshot_search_kyoto.png with the example of inputting "Kyoto". If it is an invalid input, one that is not in the database, you will see something like screenshot_invalidsearch.png
+6. When viewing all sites in the database, it should look like screenshot_all_site_info.png
 
 ## Routes in this application
 - `/` -> this is the home page
